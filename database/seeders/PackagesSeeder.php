@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
-class UserSeeder extends Seeder
+class PackagesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,12 +14,11 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'nama' => 'hernando',
-            'username' => 'hernando',
+        DB::table('packages')->insert([
             'id_outlet' => '1',
-            'role' => 'admin',
-            'password' => bcrypt('hernando'),
+            'jenis' => 'kiloan',
+            'nama_paket' => 'Kaos',
+            'harga' => '100000',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);

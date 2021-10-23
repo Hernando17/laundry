@@ -21,28 +21,45 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Beranda</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Beranda</a>
                     </li>
                     @can('admin')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('indexadmin') }}">Admin</a>
+                            <a class="nav-link" href="{{ route('outletadmin') }}">Outlet</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('outletadmin') }}">Produk</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('outletadmin') }}">Pengguna</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('outletadmin') }}">Transaksi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('outletadmin') }}">Laporan</a>
                         </li>
                     @endcan
+                </ul>
+                <ul class="navbar-nav ms-auto">
                     @can('kasir')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('indexkasir') }}">Kasir</a>
                         </li>
                     @endcan
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}">Logout</a>
-                    </li>
                     @auth
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+                        </li>
                         <li class="nav-item nav-link">
                             {{ Auth::user()->username }}
                         </li>
                     @else
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">Register</a>
                         </li>
                     @endauth
                 </ul>
