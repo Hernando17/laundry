@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Outlet;
 use Illuminate\Http\Request;
+use DB;
 
 class AdminController extends Controller
 {
@@ -37,6 +38,12 @@ class AdminController extends Controller
             'telepon' => $request->input('telepon'),
         ]);
 
+        return redirect('admin/outlet');
+    }
+
+    public function deleteoutlet($id)
+    {
+        DB::table('outlets')->where('id', $id)->delete();
         return redirect('admin/outlet');
     }
 }

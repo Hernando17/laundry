@@ -13,7 +13,22 @@ class Transactions extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('transactions', function (Blueprint $table) {
+            $table->id();
+            $table->integer('id_outlet');
+            $table->string('kode_invoice', 255);
+            $table->integer('id_member');
+            $table->dateTime('tgl', $precision = 0);
+            $table->dateTime('batas_waktu', $precision = 0);
+            $table->dateTime('tgl_bayar', $precision = 0);
+            $table->integer('biaya_tambahan');
+            $table->string('diskon', 255);
+            $table->integer('pajak');
+            $table->string('status', 255);
+            $table->string('dibayar', 255);
+            $table->integer('id_user');
+            $table->timestamps();
+        });
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Outlet;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 
@@ -12,7 +13,12 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        return view('register');
+        $data = [
+            'id' => Outlet::all(),
+            'nama' => Outlet::all(),
+        ];
+
+        return view('register', $data);
     }
 
     public function store(Request $request)

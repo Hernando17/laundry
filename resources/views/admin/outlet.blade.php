@@ -13,15 +13,24 @@
                             <th scope="col">Nama</th>
                             <th scope="col">Alamat</th>
                             <th scope="col">Telepon</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($outlet as $out)
                             <tr>
-                                <th scope="row">{{ $out->id }}</th>
+                                <th scope="row">{{ !empty($i) ? ++$i : ($i = 1) }}</th>
                                 <td>{{ $out->nama }}</td>
                                 <td>{{ $out->alamat }}</td>
                                 <td>{{ $out->telepon }}</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary">Ubah</a>
+                                    <form style="display:inline;" action="{{ route('deleteoutlet', $out->id) }}"
+                                        method="post">
+                                        @csrf
+                                        <button class="btn btn-danger" type="submit">Hapus</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

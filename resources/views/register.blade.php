@@ -49,9 +49,16 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="id_outlet" class="form-label">id_outlet</label>
-                    <input type="text" class="form-control @error('id_outlet') is-invalid @enderror" id="id_outlet"
-                        aria-describedby="id_outlet" name="id_outlet" value="{{ old('id_outlet') }}">
+                    <label for="id_outlet" class="form-label">ID Outlet</label>
+                    <select id="Select" class="form-select @error('id_outlet') is-invalid @enderror" name="id_outlet"
+                        value="{{ old('id_outlet') }}">
+                        @foreach ($id as $out)
+                            <option>
+                                ({{ $out->id }})
+                                {{ $out->nama }}
+                            </option>
+                        @endforeach
+                    </select>
                     @error('id_outlet')
                         <div id="validationServerUsernameFeedback" class="invalid-feedback">
                             {{ $message }}
@@ -68,7 +75,8 @@
                         </div>
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{{ route('index') }}" class="btn btn-primary">Kembali</a>
+                <button type="submit" class="btn btn-success">Daftar</button>
             </form>
         </div>
     </div>
