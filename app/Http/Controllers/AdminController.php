@@ -44,20 +44,17 @@ class AdminController extends Controller
         return redirect('admin/outlet');
     }
 
-    public function editoutlet()
+    public function editoutlet(Outlet $id)
     {
         $this->authorize('admin');
 
-        $data = [
-            'id' => Outlet::all(),
-        ];
-
-        return view('admin.editoutlet', $data);
+        return view('admin.editoutlet', ['out' => $id]);
     }
 
     public function editoutletact(Request $request, Outlet $id)
     {
         $this->authorize('admin');
+
         $request->validate(
             [
                 'nama' => 'required',
@@ -86,6 +83,7 @@ class AdminController extends Controller
 
     public function produk()
     {
+        $this->authorize('admin');
         $data = [
             'produk' => Produk::all(),
         ];
@@ -95,6 +93,7 @@ class AdminController extends Controller
 
     public function inputproduk()
     {
+        $this->authorize('admin');
         $data = [
             'outlet' => Outlet::all(),
         ];
@@ -120,6 +119,48 @@ class AdminController extends Controller
             'nama_paket' => $request->input('nama_paket'),
             'harga' => $request->input('harga'),
         ]);
+
+        return redirect('admin/produk');
+    }
+
+    public function deleteproduk($id)
+    {
+        $this->authorize('admin');
+        Produk::where('id', $id)->delete();
+        return redirect('admin/produk');
+    }
+
+    public function editproduk(Produk $id)
+    {
+        $data = [
+            'outlet' => Outlet::all(),
+            'produk' => $id,
+        ];
+
+        return view('admin.editproduk', $data);
+    }
+
+    public function editprodukact(Request $request, Produk $id)
+    {
+        $this->authorize('admin');
+
+        $request->validate(
+            [
+                'id_outlet' => 'required',
+                'jenis' => 'required',
+                'nama_paket' => 'required',
+                'harga' => 'required',
+            ]
+        );
+
+        $data = [
+            'id_outlet' => $request->id_outlet,
+            'jenis' => $request->jenis,
+            'nama_paket' => $request->nama_paket,
+            'harga' => $request->harga,
+        ];
+
+        Produk::where('id', $id->id)->update($data);
 
         return redirect('admin/produk');
     }

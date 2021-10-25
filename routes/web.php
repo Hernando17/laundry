@@ -36,6 +36,9 @@ Route::post('/admin/editoutletact/{id}', [AdminController::class, 'editoutletact
 Route::get('/admin/produk', [AdminController::class, 'produk'])->name('produkadmin');
 Route::get('/admin/inputproduk', [AdminController::class, 'inputproduk'])->name('inputprodukadmin');
 Route::post('/admin/addproduk', [AdminController::class, 'addproduk'])->name('addprodukadmin');
+Route::get('/admin/editproduk/{id}', [AdminController::class, 'editproduk'])->name('editprodukadmin');
+Route::post('/admin/editprodukact/{id}', [AdminController::class, 'editprodukact'])->name('editprodukadminact');
+Route::get('/admin/deleteproduk/{id}', [AdminController::class, 'deleteproduk'])->name('deleteprodukadmin');
 
 // Kasir
 Route::get('/kasir/kasir', [KasirController::class, 'index'])->name('indexkasir');
