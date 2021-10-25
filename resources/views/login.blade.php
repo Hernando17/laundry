@@ -10,32 +10,38 @@
 </head>
 
 <body>
-    <div class="card">
-        <div class="card-body">
-            @if (session()->has('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
+    <div class="container d-flex align-items-center" style="
+        margin:50px auto;
+        padding:50px;
+        ">
+        <div class="card col-xs-5 col-sm-10 col-md-5 m-auto">
+            <div class="card-body">
+                @if (session()->has('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
 
-            <form action="{{ route('loginact') }}" method="POST">
-                @csrf
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" aria-describedby="username" name="username">
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="psasword" name="password">
-                </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <a href="{{ route('index') }}" class="btn btn-primary">Kembali</a>
-                <button type="submit" class="btn btn-success">Masuk</button>
-            </form>
+                <form action="{{ route('loginact') }}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" aria-describedby="username"
+                            name="username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="psasword" name="password">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <a href="{{ route('index') }}" class="btn btn-primary">Kembali</a>
+                    <button type="submit" class="btn btn-success">Masuk</button>
+                </form>
+            </div>
         </div>
     </div>
 
