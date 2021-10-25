@@ -19,18 +19,45 @@
                     <tbody>
                         @foreach ($outlet as $out)
                             <tr>
-                                <th scope="row">{{ !empty($i) ? ++$i : ($i = 1) }}</th>
-                                <td>{{ $out->nama }}</td>
-                                <td>{{ $out->alamat }}</td>
-                                <td>{{ $out->telepon }}</td>
-                                <td>
-                                    <a href="#" class="btn btn-primary">Ubah</a>
-                                    <form style="display:inline;" action="{{ route('deleteoutlet', $out->id) }}"
-                                        method="post">
-                                        @csrf
-                                        <button class="btn btn-danger" type="submit">Hapus</button>
-                                    </form>
-                                </td>
+                                <form action="{{ route('deleteoutlet', $out->id) }}">
+                                    @csrf
+                                    <th scope="row">{{ !empty($i) ? ++$i : ($i = 1) }}</th>
+                                    <td>{{ $out->nama }}</td>
+                                    <td>{{ $out->alamat }}</td>
+                                    <td>{{ $out->telepon }}</td>
+                                    <td>
+                                        <a href="{{ route('editoutlet', $out->id) }}" class="btn btn-primary">Ubah</a>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal">
+                                            Hapus
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Apakah anda yakin?
+                                                        </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Menghapus ingin menghapus {{ $out->nama }} ?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Batal</button>
+                                                        <button type="submit" class="btn btn-danger">Hapus</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                </form>
                             </tr>
                         @endforeach
                     </tbody>
@@ -38,5 +65,4 @@
             </div>
         </div>
     </div>
-
 @endsection

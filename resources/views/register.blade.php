@@ -52,7 +52,7 @@
                     <label for="id_outlet" class="form-label">ID Outlet</label>
                     <select id="Select" class="form-select @error('id_outlet') is-invalid @enderror" name="id_outlet"
                         value="{{ old('id_outlet') }}">
-                        @foreach ($id as $out)
+                        @foreach ($user as $out)
                             <option>
                                 ({{ $out->id }})
                                 {{ $out->nama }}

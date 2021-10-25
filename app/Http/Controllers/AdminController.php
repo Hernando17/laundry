@@ -19,11 +19,13 @@ class AdminController extends Controller
 
     public function inputoutlet()
     {
+        $this->authorize('admin');
         return view('admin.inputoutlet');
     }
 
     public function addoutlet(Request $request)
     {
+        $this->authorize('admin');
         $request->validate(
             [
                 'nama' => 'required',
@@ -41,9 +43,43 @@ class AdminController extends Controller
         return redirect('admin/outlet');
     }
 
+    public function editoutlet()
+    {
+        $this->authorize('admin');
+
+        $data = [
+            'id' => Outlet::all(),
+        ];
+
+        return view('admin.editoutlet', $data);
+    }
+
+    public function editoutletact(Request $request, Outlet $id)
+    {
+        $this->authorize('admin');
+        $request->validate(
+            [
+                'nama' => 'required',
+                'alamat' => 'required',
+                'telepon' => 'required',
+            ]
+        );
+
+        $data = [
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'telepon' => $request->telepon,
+        ];
+
+        Outlet::where('id', $id->id)->update($data);
+
+        return redirect('admin/outlet');
+    }
+
     public function deleteoutlet($id)
     {
-        DB::table('outlets')->where('id', $id)->delete();
+        $this->authorize('admin');
+        Outlet::where('id', $id)->delete();
         return redirect('admin/outlet');
     }
 }

@@ -14,8 +14,7 @@ class RegisterController extends Controller
     public function index()
     {
         $data = [
-            'id' => Outlet::all(),
-            'nama' => Outlet::all(),
+            'user' => Outlet::all(),
         ];
 
         return view('register', $data);
