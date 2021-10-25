@@ -8,7 +8,7 @@
                 <form action="{{ route('editprodukadminact', $produk->id) }}" method="post">
                     @csrf
                     <div class="mb-3">
-                        <label for="id_outlet" class="form-label">ID outlet</label>
+                        <label for="id_outlet" class="form-label">ID Outlet</label>
                         <select id="Select" class="form-select @error('id_outlet') is-invalid @enderror" name="id_outlet">
                             <option>
                                 {{ old('id_outlet', $produk->id_outlet) }}
