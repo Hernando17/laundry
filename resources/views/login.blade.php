@@ -15,7 +15,12 @@
         padding:50px;
         ">
         <div class="card col-xs-5 col-sm-10 col-md-5 m-auto">
-            <div class="card-body">
+            <div class="card-body" style="
+            box-shadow: 0 1px 1px rgba(0,0,0,0.15), 
+              0 2px 2px rgba(0,0,0,0.15), 
+              0 4px 4px rgba(0,0,0,0.15), 
+              0 8px 8px rgba(0,0,0,0.15);
+              ">
                 @if (session()->has('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}
