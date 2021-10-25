@@ -1,11 +1,11 @@
 @extends('admin.templates.index')
-@section('title', 'outlet | Laundry')
+@section('title', 'Input Outlet | Laundry')
 @section('content')
 
     <div class="container">
         <div class="row">
             <div class="col">
-                <form action="{{ route('addoutlet') }}" method="post">
+                <form action="{{ route('addoutletadmin') }}" method="post">
                     @csrf
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Nama</label>

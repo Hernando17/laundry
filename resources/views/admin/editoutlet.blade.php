@@ -1,12 +1,12 @@
 @extends('admin.templates.index')
-@section('title', 'outlet | Laundry')
+@section('title', 'Edit Outlet | Laundry')
 @section('content')
 
     <div class="container">
         <div class="row">
             <div class="col">
                 @foreach ($id as $out)
-                    <form action="{{ route('editoutletact', $out->id) }}" method="post">
+                    <form action="{{ route('editoutletactadmin', $out->id) }}" method="post">
                         @csrf
 
                         <div class="mb-3">

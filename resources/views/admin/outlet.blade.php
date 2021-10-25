@@ -1,11 +1,11 @@
 @extends('admin.templates.index')
-@section('title', 'outlet | Laundry')
+@section('title', 'Outlet | Laundry')
 @section('content')
 
     <div class="container">
         <div class="row">
             <div class="col">
-                <a href="{{ route('inputoutlet') }}" class="btn btn-success mt-5 mb-3">+</a>
+                <a href="{{ route('inputoutletadmin') }}" class="btn btn-success mt-5 mb-3">+</a>
                 <table class="table">
                     <thead>
                         <tr>
@@ -19,14 +19,14 @@
                     <tbody>
                         @foreach ($outlet as $out)
                             <tr>
-                                <form action="{{ route('deleteoutlet', $out->id) }}">
-                                    @csrf
-                                    <th scope="row">{{ !empty($i) ? ++$i : ($i = 1) }}</th>
-                                    <td>{{ $out->nama }}</td>
-                                    <td>{{ $out->alamat }}</td>
-                                    <td>{{ $out->telepon }}</td>
-                                    <td>
-                                        <a href="{{ route('editoutlet', $out->id) }}" class="btn btn-primary">Ubah</a>
+                                <th scope="row">{{ !empty($i) ? ++$i : ($i = 1) }}</th>
+                                <td>{{ $out->nama }}</td>
+                                <td>{{ $out->alamat }}</td>
+                                <td>{{ $out->telepon }}</td>
+                                <td>
+                                    <a href="{{ route('editoutletadmin', $out->id) }}" class="btn btn-primary">Ubah</a>
+                                    <form style="display:inline" action="{{ route('deleteoutletadmin', $out->id) }}">
+                                        @csrf
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal">
@@ -56,7 +56,7 @@
                                             </div>
                                         </div>
 
-                                    </td>
+                                </td>
                                 </form>
                             </tr>
                         @endforeach

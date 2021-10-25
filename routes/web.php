@@ -17,16 +17,25 @@ use App\Http\Controllers\KasirController;
 |
 */
 
+// Guest
 Route::view('/', 'index')->name('index');
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('loginact');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('store');
+// Logout
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+// Admin Outlet
 Route::get('/admin/outlet', [AdminController::class, 'outlet'])->name('outletadmin');
-Route::get('/admin/deleteoutlet/{id}', [AdminController::class, 'deleteoutlet'])->name('deleteoutlet');
-Route::get('/admin/inputoutlet', [AdminController::class, 'inputoutlet'])->name('inputoutlet');
-Route::post('/admin/addoutlet', [AdminController::class, 'addoutlet'])->name('addoutlet');
-Route::get('/admin/editoutlet/{id}', [AdminController::class, 'editoutlet'])->name('editoutlet');
-Route::post('/admin/editoutletact/{id}', [AdminController::class, 'editoutletact'])->name('editoutletact');
+Route::get('/admin/deleteoutlet/{id}', [AdminController::class, 'deleteoutlet'])->name('deleteoutletadmin');
+Route::get('/admin/inputoutlet', [AdminController::class, 'inputoutlet'])->name('inputoutletadmin');
+Route::post('/admin/addoutlet', [AdminController::class, 'addoutlet'])->name('addoutletadmin');
+Route::get('/admin/editoutlet/{id}', [AdminController::class, 'editoutlet'])->name('editoutletadmin');
+Route::post('/admin/editoutletact/{id}', [AdminController::class, 'editoutletact'])->name('editoutletactadmin');
+// Admin Produk
+Route::get('/admin/produk', [AdminController::class, 'produk'])->name('produkadmin');
+Route::get('/admin/inputproduk', [AdminController::class, 'inputproduk'])->name('inputprodukadmin');
+Route::post('/admin/addproduk', [AdminController::class, 'addproduk'])->name('addprodukadmin');
+
+// Kasir
 Route::get('/kasir/kasir', [KasirController::class, 'index'])->name('indexkasir');

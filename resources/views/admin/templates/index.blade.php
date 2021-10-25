@@ -28,7 +28,7 @@
                             <a class="nav-link" href="{{ route('outletadmin') }}">Outlet</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('outletadmin') }}">Produk</a>
+                            <a class="nav-link" href="{{ route('produkadmin') }}">Produk</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('outletadmin') }}">Pengguna</a>
