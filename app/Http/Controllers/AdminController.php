@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Outlet;
+use App\Models\User;
 use App\Models\Produk;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use DB;
 
@@ -163,5 +165,79 @@ class AdminController extends Controller
         Produk::where('id', $id->id)->update($data);
 
         return redirect('admin/produk');
+    }
+
+    public function pengguna()
+    {
+        $data = [
+            'pengguna' => User::all(),
+        ];
+
+        return view('admin.pengguna', $data);
+    }
+
+    public function  deletepengguna($id)
+    {
+        $this->authorize('admin');
+        User::where('id', $id)->delete();
+        return redirect('admin/pengguna');
+    }
+
+    public function editpengguna(User $id)
+    {
+        $this->authorize('admin');
+
+        $data = [
+            'outlet' => Outlet::all(),
+            'pengguna' => $id,
+        ];
+
+        return view('admin.editpengguna', $data);
+    }
+
+    public function editpenggunaact(Request $request, User $id)
+    {
+        $this->authorize('admin');
+
+        $request->validate(
+            [
+                'username' => 'required',
+                'nama' => 'required',
+                'id_outlet' => 'required',
+                'role' => 'required',
+            ]
+        );
+
+        $data = [
+            'username' => $request->username,
+            'nama' => $request->nama,
+            'id_outlet' => $request->id_outlet,
+            'role' => $request->role,
+        ];
+
+        User::where('id', $id->id)->update($data);
+
+        return redirect('admin/pengguna');
+    }
+
+    public function gantipasswordpengguna(Request $request, User $id)
+    {
+        $this->authorize('admin');
+
+        $request->validate(
+            [
+                'password' => 'required',
+            ]
+        );
+
+        $data = [
+            'password' => $request->password,
+        ];
+
+        $data['password'] = Hash::make($data['password']);
+
+        User::where('id', $id->id)->update($data);
+
+        return redirect('admin/pengguna');
     }
 }

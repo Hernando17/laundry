@@ -39,6 +39,12 @@ Route::post('/admin/addproduk', [AdminController::class, 'addproduk'])->name('ad
 Route::get('/admin/editproduk/{id}', [AdminController::class, 'editproduk'])->name('editprodukadmin');
 Route::post('/admin/editprodukact/{id}', [AdminController::class, 'editprodukact'])->name('editprodukadminact');
 Route::get('/admin/deleteproduk/{id}', [AdminController::class, 'deleteproduk'])->name('deleteprodukadmin');
+// Admin Pengguna
+Route::get('/admin/pengguna', [AdminController::class, 'pengguna'])->name('penggunaadmin');
+Route::get('/admin/deletepengguna/{id}', [AdminController::class, 'deletepengguna'])->name('deletepenggunaadmin');
+Route::get('/admin/editpengguna/{id}', [AdminController::class, 'editpengguna'])->name('editpenggunaadmin');
+Route::post('/admin/editpenggunaact/{id}', [AdminController::class, 'editpenggunaact'])->name('editpenggunaadminact');
+Route::get('/admin/gantipasswordpengguna/{id}', [AdminController::class, 'gantipasswordpengguna'])->name('gantipasswordpenggunaadmin');
 
 // Kasir
 Route::get('/kasir/kasir', [KasirController::class, 'index'])->name('indexkasir');

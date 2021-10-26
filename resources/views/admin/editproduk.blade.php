@@ -20,7 +20,7 @@
                                 </option>
                             @endforeach
                         </select>
-                        @error('id_produklet')
+                        @error('id_outlet')
                             <div id="validationServerUsernameFeedback" class="invalid-feedback">
                                 {{ $message }}
                             </div>
