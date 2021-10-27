@@ -52,6 +52,16 @@
                         @enderror
                     </div>
                     <div class="mb-3">
+                        <label for="tgl" class="form-label">Tanggal</label>
+                        <input type="date" class="form-control @error('tgl') is-invalid @enderror" name="tgl"
+                            value="{{ old('tgl') }}">
+                        @error('tgl')
+                            <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
                         <label for="batas_waktu" class="form-label">Batas Waktu</label>
                         <input type="date" class="form-control @error('batas_waktu') is-invalid @enderror"
                             name="batas_waktu" value="{{ old('batas_waktu') }}">

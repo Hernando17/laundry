@@ -283,22 +283,21 @@ class AdminController extends Controller
     public function addtransaksi(Request $request)
     {
         $this->authorize('admin');
-        $request->validate(
-            [
-                'id_outlet' => 'required',
-                'kode_invoice' => 'required',
-                'id_member' => 'required',
-                'tgl' => 'required',
-                'batas_waktu' => 'required',
-                'tgl_bayar' => 'required',
-                'biaya_tambahan' => 'required',
-                'diskon' => 'required',
-                'pajak' => 'required',
-                'status' => 'required',
-                'dibayar' => 'required',
-                'id_user' => 'required',
-            ]
-        );
+
+        $request->validate([
+            'id_outlet' => 'required',
+            'kode_invoice' => 'required',
+            'id_member' => 'required',
+            'tgl' => 'required',
+            'batas_waktu' => 'required',
+            'tgl_bayar' => 'required',
+            'biaya_tambahan' => 'required',
+            'diskon' => 'required',
+            'pajak' => 'required',
+            'status' => 'required',
+            'dibayar' => 'required',
+            'id_user' => 'required',
+        ]);
 
         $data = Transaksi::create([
             'id_outlet' => $request->input('id_outlet'),
