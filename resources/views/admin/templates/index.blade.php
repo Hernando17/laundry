@@ -34,7 +34,7 @@
                             <a class="nav-link" href="{{ route('penggunaadmin') }}">Pengguna</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('outletadmin') }}">Transaksi</a>
+                            <a class="nav-link" href="{{ route('transaksiadmin') }}">Transaksi</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('outletadmin') }}">Laporan</a>
