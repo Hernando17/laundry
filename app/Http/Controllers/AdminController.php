@@ -269,11 +269,11 @@ class AdminController extends Controller
         $kode = Transaksi::count();
 
         if ($kode == 0) {
-            $urut = 1000001;
+            $urut = 1001;
             $nomor = 'KL' . $blnthn . $urut;
         } else {
             $ambil = Transaksi::all()->last();
-            $urut = (int)substr($ambil->kode_invoice, -8) + 1;
+            $urut = (int)substr($ambil->kode_invoice, -4) + 1;
             $nomor = 'KL' . $blnthn . $urut;
         }
 
@@ -313,6 +313,64 @@ class AdminController extends Controller
             'dibayar' => $request->input('dibayar'),
             'id_user' => $request->input('id_user'),
         ]);
+
+        return redirect('admin/transaksi');
+    }
+
+    public function deletetransaksi($id)
+    {
+        $this->authorize('admin');
+        Transaksi::where('id', $id)->delete();
+        return redirect('admin/transaksi');
+    }
+
+    public function edittransaksi(Transaksi $id)
+    {
+        $data = [
+            'transaksi' => $id,
+            'outlet' => Outlet::all(),
+            'user' => User::all(),
+            'member' => Member::all(),
+        ];
+
+        return view('admin.edittransaksi', $data);
+    }
+
+    public function edittransaksiact(Request $request, Transaksi $id)
+    {
+        $this->authorize('admin');
+
+        $request->validate([
+            'id_outlet' => 'required',
+            'kode_invoice' => 'required',
+            'id_member' => 'required',
+            'tgl' => 'required',
+            'batas_waktu' => 'required',
+            'tgl_bayar' => 'required',
+            'biaya_tambahan' => 'required',
+            'diskon' => 'required',
+            'pajak' => 'required',
+            'status' => 'required',
+            'dibayar' => 'required',
+            'id_user' => 'required',
+        ]);
+
+        $data = [
+            'id_outlet' => $request->id_outlet,
+            'kode_invoice' => $request->kode_invoice,
+            'id_member' => $request->id_member,
+            'tgl' => $request->tgl,
+            'batas_waktu' => $request->batas_waktu,
+            'tgl_bayar' => $request->tgl_bayar,
+            'biaya_tambahan' => $request->biaya_tambahan,
+            'diskon' => $request->diskon,
+            'pajak' => $request->pajak,
+            'status' => $request->status,
+            'dibayar' => $request->dibayar,
+            'id_user' => $request->id_user,
+        ];
+
+        Transaksi::where('id', $id->id)->update($data);
 
         return redirect('admin/transaksi');
     }

@@ -49,6 +49,10 @@ Route::get('/admin/gantipasswordpengguna/{id}', [AdminController::class, 'gantip
 Route::get('/admin/transaksi', [AdminController::class, 'transaksi'])->name('transaksiadmin');
 Route::get('/admin/inputtransaksi', [AdminController::class, 'inputtransaksi'])->name('inputtransaksiadmin');
 Route::post('/admin/addtransaksi', [AdminController::class, 'addtransaksi'])->name('addtransaksiadmin');
+Route::get('/admin/deletetransaksi/{id}', [AdminController::class, 'deletetransaksi'])->name('deletetransaksiadmin');
+Route::get('/admin/edittransaksi/{id}', [AdminController::class, 'edittransaksi'])->name('edittransaksiadmin');
+Route::post('/admin/edittransaksiact/{id}', [AdminController::class, 'edittransaksiact'])->name('edittransaksiadminact');
+
 
 // Kasir
 Route::get('/kasir/kasir', [KasirController::class, 'index'])->name('indexkasir');

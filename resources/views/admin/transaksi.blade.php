@@ -14,6 +14,8 @@
                             <th scope="col">Kode Invoice</th>
                             <th scope="col">Tanggal</th>
                             <th scope="col">Batas Waktu</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Dibayar</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -25,9 +27,11 @@
                                 <td>{{ $out->kode_invoice }}</td>
                                 <td>{{ $out->tgl }}</td>
                                 <td>{{ $out->batas_waktu }}</td>
+                                <td>{{ $out->status }}</td>
+                                <td>{{ $out->dibayar }}</td>
                                 <td>
-                                    <a href="{{ route('editprodukadmin', $out->id) }}" class="btn btn-primary">Ubah</a>
-                                    <form action="{{ route('deleteprodukadmin', $out->id) }}" style="display:inline;">
+                                    <a href="{{ route('edittransaksiadmin', $out->id) }}" class="btn btn-primary">Ubah</a>
+                                    <form action="{{ route('deletetransaksiadmin', $out->id) }}" style="display:inline;">
                                         @csrf
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
@@ -47,7 +51,7 @@
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Menghapus ingin menghapus {{ $out->nama_paket }} ?
+                                                        Menghapus ingin menghapus {{ $out->kode_invoice }} ?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
