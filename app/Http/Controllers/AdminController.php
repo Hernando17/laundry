@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Member;
 use App\Models\Produk;
 use App\Models\Transaksi;
+use App\Models\Laporan;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -373,5 +374,87 @@ class AdminController extends Controller
         Transaksi::where('id', $id->id)->update($data);
 
         return redirect('admin/transaksi');
+    }
+
+    public function laporan()
+    {
+        $this->authorize('admin');
+
+        $data = [
+            'laporan' => Laporan::all(),
+        ];
+
+        return view('admin.laporan', $data);
+    }
+
+    public function inputlaporan()
+    {
+        $this->authorize('admin');
+
+        $data = [
+            'transaksi' => Transaksi::all(),
+            'produk' => Produk::all(),
+        ];
+
+        return view('admin.inputlaporan', $data);
+    }
+
+    public function addlaporan(Request $request)
+    {
+        $request->validate([
+            'id_transaksi' => 'required',
+            'id_paket' => 'required',
+            'qty' => 'required',
+        ]);
+
+        $data = Laporan::create([
+            'id_transaksi' => $request->input('id_transaksi'),
+            'id_paket' => $request->input('id_paket'),
+            'qty' => $request->input('qty'),
+            'keterangan' => $request->input('keterangan'),
+        ]);
+
+        return redirect('admin/laporan');
+    }
+
+    public function deletelaporan($id)
+    {
+        $this->authorize('admin');
+        Laporan::where('id', $id)->delete();
+        return redirect('admin/laporan');
+    }
+
+    public function editlaporan(Laporan $id)
+    {
+        $this->authorize('admin');
+
+        $data = [
+            'transaksi' => Transaksi::all(),
+            'produk' => Produk::all(),
+            'laporan' => $id,
+        ];
+
+        return view('admin.editlaporan', $data);
+    }
+
+    public function editlaporanact(Request $request, $id)
+    {
+        $request->validate([
+            'id_transaksi' => 'required',
+            'id_paket' => 'required',
+            'qty' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        $data = [
+            'id_transaksi' => $request->id_transaksi,
+            'id_paket' => $request->id_paket,
+            'qty' => $request->qty,
+            'keterangan' => $request->keterangan,
+        ];
+
+        Laporan::where('id', $id->id)->update($data);
+
+        return redirect('admin/laporan');
     }
 }

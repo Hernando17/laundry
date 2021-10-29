@@ -37,7 +37,7 @@
                             <a class="nav-link" href="{{ route('transaksiadmin') }}">Transaksi</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('outletadmin') }}">Laporan</a>
+                            <a class="nav-link" href="{{ route('laporanadmin') }}">Laporan</a>
                         </li>
                     @endcan
                 </ul>
