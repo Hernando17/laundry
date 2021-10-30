@@ -6,17 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Laporan</title>
-    <link rel="stylesheet" href="{{ asset('assets') }}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/style.css">
 </head>
 
 <body>
-    <div class="container align-items-center bg-secondary">
-        <h1>LAPORAN</h1>
+    <div class="container">
+        <h1 class="judul">LAUNDRY CUCI BERSIH</h1>
+        <hr>
+        <h2 class="judul">LAPORAN</h2>
         <br>
-        <p>ID Transaksi : {{ $out->id_transaksi }}</p>
-        <p>ID Paket : {{ $out->id_paket }}</p>
-        <p>Qty : {{ $out->qty }}</p>
-        <p>Keterangan : {{ $out->keterangan }}</p>
+        <table class="panjang">
+            <tr>
+                <th>ID Transaksi</th>
+                <th>ID Paket</th>
+                <th>Qty</th>
+                <th>Keterangan</th>
+            </tr>
+            <tr>
+                <td>{{ $out->id_transaksi }}</td>
+                <td>{{ $out->id_paket }}</td>
+                <td>{{ $out->qty }}</td>
+                <td>{{ $out->keterangan }}</td>
+            </tr>
+        </table>
     </div>
 </body>
 <footer>
