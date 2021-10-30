@@ -439,6 +439,8 @@ class AdminController extends Controller
 
     public function editlaporanact(Request $request, $id)
     {
+        $this->authorize('admin');
+
         $request->validate([
             'id_transaksi' => 'required',
             'id_paket' => 'required',
@@ -456,5 +458,15 @@ class AdminController extends Controller
         Laporan::where('id', $id->id)->update($data);
 
         return redirect('admin/laporan');
+    }
+
+    public function printlaporan(Laporan $id)
+    {
+        return view('admin.printlaporan', ['out' => $id]);
+    }
+
+    public function printlaporanact()
+    {
+        // 
     }
 }

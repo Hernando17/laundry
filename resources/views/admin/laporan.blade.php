@@ -27,6 +27,7 @@
                                 <td>{{ $out->keterangan }}</td>
                                 <td>
                                     <a href="{{ route('editlaporanadmin', $out->id) }}" class="btn btn-primary">Ubah</a>
+                                    <a href="{{ route('printlaporanadmin', $out->id) }}" class="btn btn-dark">Print</a>
                                     <form action="{{ route('deletelaporanadmin', $out->id) }}" style="display:inline;">
                                         @csrf
                                         <!-- Button trigger modal -->

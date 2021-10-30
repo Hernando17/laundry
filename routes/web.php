@@ -58,6 +58,7 @@ Route::get('/admin/inputlaporan', [AdminController::class, 'inputlaporan'])->nam
 Route::post('/admin/addlaporan', [AdminController::class, 'addlaporan'])->name('addlaporanadmin');
 Route::get('/admin/deletelaporan/{id}', [AdminController::class, 'deletelaporan'])->name('deletelaporanadmin');
 Route::get('/admin/editlaporan/{id}', [AdminController::class, 'editlaporan'])->name('editlaporanadmin');
+Route::get('/admin/printlaporan/{id}', [AdminController::class, 'printlaporan'])->name('printlaporanadmin');
 
 
 
