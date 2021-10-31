@@ -6,6 +6,12 @@
         <div class="row">
             <div class="col">
                 <a href="{{ route('inputtransaksiadmin') }}" class="btn btn-success mt-5 mb-3">+</a>
+                @if (session()->has('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
                 <table class="table">
                     <thead>
                         <tr>
@@ -35,12 +41,12 @@
                                         @csrf
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">
+                                            data-bs-target="#exampleModal{{ $out->id }}">
                                             Hapus
                                         </button>
 
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                                        <div class="modal fade" id="exampleModal{{ $out->id }}" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">

@@ -32,12 +32,12 @@
                                         @csrf
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">
+                                            data-bs-target="#exampleModal{{ $out->id }}">
                                             Hapus
                                         </button>
 
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                                        <div class="modal fade" id="exampleModal{{ $out->id }}" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -48,7 +48,7 @@
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Menghapus ingin menghapus {{ $out->nama_paket }} ?
+                                                        Menghapus ingin menghapus {{ $out->id_transaksi }} ?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"

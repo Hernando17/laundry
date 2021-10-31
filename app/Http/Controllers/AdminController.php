@@ -46,6 +46,8 @@ class AdminController extends Controller
             'telepon' => $request->input('telepon'),
         ]);
 
+        $request->session()->flash('success', 'Data Outlet berhasil ditambahkan');
+
         return redirect('admin/outlet');
     }
 
@@ -76,13 +78,16 @@ class AdminController extends Controller
 
         Outlet::where('id', $id->id)->update($data);
 
+        $request->session()->flash('success', 'Data Outlet berhasil diubah');
+
         return redirect('admin/outlet');
     }
 
-    public function deleteoutlet($id)
+    public function deleteoutlet(Request $request, $id)
     {
         $this->authorize('admin');
         Outlet::where('id', $id)->delete();
+        $request->session()->flash('success', 'Data Outlet berhasil dihapus');
         return redirect('admin/outlet');
     }
 
@@ -96,7 +101,7 @@ class AdminController extends Controller
         return view('admin.produk', $data);
     }
 
-    public function inputproduk()
+    public function inputproduk(Request $request)
     {
         $this->authorize('admin');
         $data = [
@@ -125,6 +130,8 @@ class AdminController extends Controller
             'harga' => $request->input('harga'),
         ]);
 
+        $request->session()->flash('success', 'Data Produk berhasil ditambahkan');
+
         return redirect('admin/produk');
     }
 
@@ -135,7 +142,7 @@ class AdminController extends Controller
         return redirect('admin/produk');
     }
 
-    public function editproduk(Produk $id)
+    public function editproduk(Request $request, Produk $id)
     {
         $data = [
             'outlet' => Outlet::all(),
@@ -167,6 +174,8 @@ class AdminController extends Controller
 
         Produk::where('id', $id->id)->update($data);
 
+        $request->session()->flash('success', 'Data Produk berhasil diubah');
+
         return redirect('admin/produk');
     }
 
@@ -179,10 +188,11 @@ class AdminController extends Controller
         return view('admin.pengguna', $data);
     }
 
-    public function  deletepengguna($id)
+    public function  deletepengguna(Request $request, $id)
     {
         $this->authorize('admin');
         User::where('id', $id)->delete();
+        $request->session()->flash('success', 'Data Pengguna berhasil dihapus');
         return redirect('admin/pengguna');
     }
 
@@ -220,6 +230,7 @@ class AdminController extends Controller
 
         User::where('id', $id->id)->update($data);
 
+        $request->session()->flash('success', 'Data Pengguna berhasil diubah');
         return redirect('admin/pengguna');
     }
 
@@ -240,6 +251,8 @@ class AdminController extends Controller
         $data['password'] = Hash::make($data['password']);
 
         User::where('id', $id->id)->update($data);
+
+        $request->session()->flash('success', 'Password pengguna berhasil diganti');
 
         return redirect('admin/pengguna');
     }
@@ -315,13 +328,15 @@ class AdminController extends Controller
             'id_user' => $request->input('id_user'),
         ]);
 
+        $request->session()->flash('success', 'Data Transaksi berhasil ditambah');
         return redirect('admin/transaksi');
     }
 
-    public function deletetransaksi($id)
+    public function deletetransaksi(Request $request, $id)
     {
         $this->authorize('admin');
         Transaksi::where('id', $id)->delete();
+        $request->session()->flash('success', 'Data Transaksi berhasil dihapus');
         return redirect('admin/transaksi');
     }
 
@@ -373,6 +388,7 @@ class AdminController extends Controller
 
         Transaksi::where('id', $id->id)->update($data);
 
+        $request->session()->flash('success', 'Data Transaksi berhasil diubah');
         return redirect('admin/transaksi');
     }
 
@@ -414,13 +430,15 @@ class AdminController extends Controller
             'keterangan' => $request->input('keterangan'),
         ]);
 
+        $request->session()->flash('success', 'Data Laporan berhasil diubah');
         return redirect('admin/laporan');
     }
 
-    public function deletelaporan($id)
+    public function deletelaporan(Request $request, $id)
     {
         $this->authorize('admin');
         Laporan::where('id', $id)->delete();
+        $request->session()->flash('success', 'Data Laporan berhasil diubah');
         return redirect('admin/laporan');
     }
 
@@ -457,6 +475,7 @@ class AdminController extends Controller
 
         Laporan::where('id', $id->id)->update($data);
 
+        $request->session()->flash('success', 'Data Laporan berhasil diubah');
         return redirect('admin/laporan');
     }
 
