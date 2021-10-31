@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container col-5 mt-5">
-        <form action="{{ route('editlaporanadminact', $laporan->id) }}" method="post">
+        <form action="{{ route('editlaporankasiract', $laporan->id) }}" method="post">
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">id_transaksi</label>
@@ -63,7 +63,7 @@
                     </div>
                 @enderror
             </div>
-            <a href="{{ route('laporanadmin') }}" class="btn btn-primary">Kembali</a>
+            <a href="{{ route('laporankasir') }}" class="btn btn-primary">Kembali</a>
             <button type="submit" class="btn btn-success">Selesai</button>
         </form>
     </div>

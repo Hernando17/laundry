@@ -58,6 +58,7 @@ Route::get('/admin/inputlaporan', [AdminController::class, 'inputlaporan'])->nam
 Route::post('/admin/addlaporan', [AdminController::class, 'addlaporan'])->name('addlaporanadmin');
 Route::get('/admin/deletelaporan/{id}', [AdminController::class, 'deletelaporan'])->name('deletelaporanadmin');
 Route::get('/admin/editlaporan/{id}', [AdminController::class, 'editlaporan'])->name('editlaporanadmin');
+Route::post('/admin/editlaporanact/{id}', [AdminController::class, 'editlaporanact'])->name('editlaporanadminact');
 Route::get('/admin/printlaporan/{id}', [AdminController::class, 'printlaporan'])->name('printlaporanadmin');
 
 
@@ -71,3 +72,12 @@ Route::post('/kasir/addtransaksi', [KasirController::class, 'addtransaksi'])->na
 Route::get('/kasir/deletetransaksi/{id}', [KasirController::class, 'deletetransaksi'])->name('deletetransaksikasir');
 Route::get('/kasir/edittransaksi/{id}', [KasirController::class, 'edittransaksi'])->name('edittransaksikasir');
 Route::post('/kasir/edittransaksiact/{id}', [KasirController::class, 'edittransaksiact'])->name('edittransaksikasiract');
+
+// kasir Laporan
+Route::get('/kasir/laporan', [KasirController::class, 'laporan'])->name('laporankasir');
+Route::get('/kasir/inputlaporan', [KasirController::class, 'inputlaporan'])->name('inputlaporankasir');
+Route::post('/kasir/addlaporan', [KasirController::class, 'addlaporan'])->name('addlaporankasir');
+Route::get('/kasir/deletelaporan/{id}', [KasirController::class, 'deletelaporan'])->name('deletelaporankasir');
+Route::get('/kasir/editlaporan/{id}', [KasirController::class, 'editlaporan'])->name('editlaporankasir');
+Route::post('/kasir/editlaporanact/{id}', [KasirController::class, 'editlaporanact'])->name('editlaporankasiract');
+Route::get('/kasir/printlaporan/{id}', [KasirController::class, 'printlaporan'])->name('printlaporankasir');

@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <a href="{{ route('inputlaporanadmin') }}" class="btn btn-success mt-5 mb-3">+</a>
+                <a href="{{ route('inputlaporankasir') }}" class="btn btn-success mt-5 mb-3">+</a>
                 <table class="table">
                     <thead>
                         <tr>
@@ -26,9 +26,9 @@
                                 <td>{{ $out->qty }}</td>
                                 <td>{{ $out->keterangan }}</td>
                                 <td>
-                                    <a href="{{ route('editlaporanadmin', $out->id) }}" class="btn btn-primary">Ubah</a>
-                                    <a href="{{ route('printlaporanadmin', $out->id) }}" class="btn btn-dark">Print</a>
-                                    <form action="{{ route('deletelaporanadmin', $out->id) }}" style="display:inline;">
+                                    <a href="{{ route('editlaporankasir', $out->id) }}" class="btn btn-primary">Ubah</a>
+                                    <a href="{{ route('printlaporankasir', $out->id) }}" class="btn btn-dark">Print</a>
+                                    <form action="{{ route('deletelaporankasir', $out->id) }}" style="display:inline;">
                                         @csrf
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
@@ -48,7 +48,7 @@
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Menghapus ingin menghapus {{ $out->id_transaksi }} ?
+                                                        Menghapus ingin menghapus {{ $out->nama_paket }} ?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"

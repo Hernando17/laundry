@@ -150,4 +150,93 @@ class KasirController extends Controller
 
         return redirect('kasir/transaksi');
     }
+
+    public function laporan()
+    {
+        $this->authorize('kasir');
+
+        $data = [
+            'laporan' => Laporan::all(),
+        ];
+
+        return view('kasir.laporan', $data);
+    }
+
+    public function inputlaporan()
+    {
+        $this->authorize('kasir');
+
+        $data = [
+            'transaksi' => Transaksi::all(),
+            'produk' => Produk::all(),
+        ];
+
+        return view('kasir.inputlaporan', $data);
+    }
+
+    public function addlaporan(Request $request)
+    {
+        $request->validate([
+            'id_transaksi' => 'required',
+            'id_paket' => 'required',
+            'qty' => 'required',
+        ]);
+
+        $data = Laporan::create([
+            'id_transaksi' => $request->input('id_transaksi'),
+            'id_paket' => $request->input('id_paket'),
+            'qty' => $request->input('qty'),
+            'keterangan' => $request->input('keterangan'),
+        ]);
+
+        return redirect('kasir/laporan');
+    }
+
+    public function deletelaporan($id)
+    {
+        $this->authorize('kasir');
+        Laporan::where('id', $id)->delete();
+        return redirect('kasir/laporan');
+    }
+
+    public function editlaporan(Laporan $id)
+    {
+        $this->authorize('kasir');
+
+        $data = [
+            'transaksi' => Transaksi::all(),
+            'produk' => Produk::all(),
+            'laporan' => $id,
+        ];
+
+        return view('kasir.editlaporan', $data);
+    }
+
+    public function editlaporanact(Request $request, Laporan $id)
+    {
+        $this->authorize('kasir');
+
+        $request->validate([
+            'id_transaksi' => 'required',
+            'id_paket' => 'required',
+            'qty' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        $data = [
+            'id_transaksi' => $request->id_transaksi,
+            'id_paket' => $request->id_paket,
+            'qty' => $request->qty,
+            'keterangan' => $request->keterangan,
+        ];
+
+        Laporan::where('id', $id->id)->update($data);
+
+        return redirect('kasir/laporan');
+    }
+
+    public function printlaporan(Laporan $id)
+    {
+        return view('kasir.printlaporan', ['out' => $id]);
+    }
 }

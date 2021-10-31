@@ -45,7 +45,7 @@
                             <a class="nav-link" href="{{ route('transaksikasir') }}">Transaksi</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Laporan</a>
+                            <a class="nav-link" href="{{ route('laporankasir') }}">Laporan</a>
                         </li>
                     @endcan
                 </ul>

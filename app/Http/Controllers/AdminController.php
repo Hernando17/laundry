@@ -437,7 +437,7 @@ class AdminController extends Controller
         return view('admin.editlaporan', $data);
     }
 
-    public function editlaporanact(Request $request, $id)
+    public function editlaporanact(Request $request, Laporan $id)
     {
         $this->authorize('admin');
 
@@ -463,10 +463,5 @@ class AdminController extends Controller
     public function printlaporan(Laporan $id)
     {
         return view('admin.printlaporan', ['out' => $id]);
-    }
-
-    public function printlaporanact()
-    {
-        // 
     }
 }
