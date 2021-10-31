@@ -2,7 +2,8 @@
 @section('title', 'Pengguna | Laundry')
 @section('content')
 
-    <div class="container" style="padding:50px;">
+    <div class="container">
+        <a href="{{ route('register') }}" class="btn btn-success mt-5 mb-3">+</a>
         <table class="table">
             <thead>
                 <tr>

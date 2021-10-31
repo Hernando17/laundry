@@ -13,6 +13,8 @@ class RegisterController extends Controller
 {
     public function index()
     {
+        $this->authorize('admin');
+
         $data = [
             'user' => Outlet::all(),
         ];
@@ -22,6 +24,7 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+        $this->authorize('admin');
 
         $validatedData = $request->validate([
             'nama' => ['required', 'min:3', 'max:255'],

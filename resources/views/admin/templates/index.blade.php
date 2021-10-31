@@ -61,9 +61,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">Masuk</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">Daftar</a>
-                        </li>
                     @endauth
                 </ul>
             </div>
