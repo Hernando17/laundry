@@ -40,13 +40,16 @@
                             <a class="nav-link" href="{{ route('laporanadmin') }}">Laporan</a>
                         </li>
                     @endcan
-                </ul>
-                <ul class="navbar-nav ms-auto">
                     @can('kasir')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('indexkasir') }}">Kasir</a>
+                            <a class="nav-link" href="{{ route('transaksikasir') }}">Transaksi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Laporan</a>
                         </li>
                     @endcan
+                </ul>
+                <ul class="navbar-nav ms-auto">
                     @auth
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}">Logout</a>

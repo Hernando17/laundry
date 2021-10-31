@@ -61,6 +61,13 @@ Route::get('/admin/editlaporan/{id}', [AdminController::class, 'editlaporan'])->
 Route::get('/admin/printlaporan/{id}', [AdminController::class, 'printlaporan'])->name('printlaporanadmin');
 
 
-
 // Kasir
 Route::get('/kasir/kasir', [KasirController::class, 'index'])->name('indexkasir');
+
+// Kasir Transaksi
+Route::get('/kasir/transaksi', [KasirController::class, 'transaksi'])->name('transaksikasir');
+Route::get('/kasir/inputtransaksi', [KasirController::class, 'inputtransaksi'])->name('inputtransaksikasir');
+Route::post('/kasir/addtransaksi', [KasirController::class, 'addtransaksi'])->name('addtransaksikasir');
+Route::get('/kasir/deletetransaksi/{id}', [KasirController::class, 'deletetransaksi'])->name('deletetransaksikasir');
+Route::get('/kasir/edittransaksi/{id}', [KasirController::class, 'edittransaksi'])->name('edittransaksikasir');
+Route::post('/kasir/edittransaksiact/{id}', [KasirController::class, 'edittransaksiact'])->name('edittransaksikasiract');
